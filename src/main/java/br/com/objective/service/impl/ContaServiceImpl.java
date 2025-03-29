@@ -1,5 +1,7 @@
 package br.com.objective.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +18,11 @@ public class ContaServiceImpl implements ContaService {
 	ContaRepository contaRepository;
 
 	public Conta create(ContaDto dto) {
-		
 		return contaRepository.save(ContaMapper.fromDtoToEntity(dto));
-		
+	}
+
+	public List<Conta> findAll() {
+		return contaRepository.findAll();
 	}
 
 }

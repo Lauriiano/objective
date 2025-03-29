@@ -1,6 +1,7 @@
 package br.com.objective.service;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,9 +17,12 @@ class ContaServiceTest {
 
 	@Test
 	void deveCriarContaEretornarContaCriada() {
-		System.out.println("passou");
-		Assertions.assertThat(contaService.create(ContaDto.builder().saldo(108.37f).numero_conta(1234).build())).isNull();
-		
+		assertThat(contaService.create(ContaDto.builder().saldo(108.37f).numero_conta(1234).build())).isNotNull();
+	}
+	
+	@Test
+	void deveRetornarListaDeContas() {
+		assertThat(contaService.findAll()).isNotEmpty();
 	}
 	
 }
