@@ -1,9 +1,10 @@
 package br.com.objective.service;
 
 import br.com.objective.dto.ContaDto;
+import br.com.objective.model.Conta;
 
 public interface ContaService {
 	
-	void create(ContaDto dto);
+	Conta create(ContaDto dto);
 
 }
