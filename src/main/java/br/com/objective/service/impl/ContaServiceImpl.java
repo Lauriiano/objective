@@ -25,4 +25,8 @@ public class ContaServiceImpl implements ContaService {
 		return contaRepository.findAll();
 	}
 
+	public Conta findById(Integer id) {
+		return contaRepository.findById(id).get();
+	}
+
 }

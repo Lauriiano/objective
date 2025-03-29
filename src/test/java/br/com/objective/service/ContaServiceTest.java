@@ -25,4 +25,9 @@ class ContaServiceTest {
 		assertThat(contaService.findAll()).isNotEmpty();
 	}
 	
+	@Test
+	void deveRetornarConta() {
+		assertThat(contaService.findById(123)).isNotNull();
+	}
+	
 }

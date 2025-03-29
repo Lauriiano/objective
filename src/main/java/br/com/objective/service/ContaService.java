@@ -10,5 +10,7 @@ public interface ContaService {
 	Conta create(ContaDto dto);
 	
 	List<Conta> findAll();
+	
+	Conta findById(Integer id);
 
 }

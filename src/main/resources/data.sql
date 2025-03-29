@@ -1,0 +1,1 @@
+INSERT INTO conta VALUES (123, 100.5)
