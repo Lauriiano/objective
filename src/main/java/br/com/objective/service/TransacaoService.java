@@ -1,10 +1,10 @@
 package br.com.objective.service;
 
 import br.com.objective.dto.TransacaoDto;
-import br.com.objective.model.Transacao;
+import br.com.objective.dto.TransacaoResponseDto;
 
 public interface TransacaoService {
 
-	Transacao transacao(TransacaoDto dto);
+	TransacaoResponseDto transacao(TransacaoDto dto);
 	
 }

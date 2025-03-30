@@ -11,5 +11,12 @@ public class ContaMapper {
 				.saldo(dto.getSaldo())
 				.build();
 	}
+	
+	public static ContaDto fromEntityToDto(Conta conta) {
+		return ContaDto.builder()
+				.numero_conta(conta.getNumero_conta())
+				.saldo(conta.getSaldo())
+				.build();
+	}
 
 }
