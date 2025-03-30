@@ -43,6 +43,11 @@ public class ContaServiceImpl implements ContaService {
 		
 		return conta.get();
 	}
+	
+	public Conta update(Conta conta) {
+		findById(conta.getNumero_conta());
+		return contaRepository.save(conta);
+	}
 
 	private Optional<Conta> buscarContaPorId(Integer id) {
 		return contaRepository.findById(id);

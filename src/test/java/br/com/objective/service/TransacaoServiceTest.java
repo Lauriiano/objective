@@ -14,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import br.com.objective.dto.TransacaoDto;
 import br.com.objective.dto.TransacaoResponseDto;
 import br.com.objective.exception.BadRequestException;
-import br.com.objective.mapper.ContaMapper;
 import br.com.objective.mapper.TransacaoMapper;
 import br.com.objective.model.Conta;
 import br.com.objective.model.Transacao;
@@ -70,7 +69,7 @@ class TransacaoServiceTest {
 		TransacaoDto dtoAtualizado = TransacaoDto.builder().forma_pagamento(DEBITO).numero_conta(NUMERO_CONTA).valor(valorPorcentagem).build();
 		responseDto = TransacaoResponseDto.builder().numero_conta(NUMERO_CONTA).saldo(contaAtualizada.getSaldo()).build();
 		
-		when(contaService.create(ContaMapper.fromEntityToDto(contaAtualizada))).thenReturn(contaAtualizada);
+		when(contaService.update(contaAtualizada)).thenReturn(contaAtualizada);
 		
 		when(transacaoRepository.save(TransacaoMapper.fromDtoToEntity(dtoAtualizado))).thenReturn(transacao);
 		
@@ -91,7 +90,7 @@ class TransacaoServiceTest {
 		TransacaoDto dtoAtualizado = TransacaoDto.builder().forma_pagamento(CREDITO).numero_conta(NUMERO_CONTA).valor(valorPorcentagem).build();
 		responseDto = TransacaoResponseDto.builder().numero_conta(NUMERO_CONTA).saldo(contaAtualizada.getSaldo()).build();
 		
-		when(contaService.create(ContaMapper.fromEntityToDto(contaAtualizada))).thenReturn(contaAtualizada);
+		when(contaService.update(contaAtualizada)).thenReturn(contaAtualizada);
 		
 		when(transacaoRepository.save(TransacaoMapper.fromDtoToEntity(dtoAtualizado))).thenReturn(transacao);
 		
@@ -109,7 +108,7 @@ class TransacaoServiceTest {
 		Conta contaAtualizada = Conta.builder().numero_conta(NUMERO_CONTA).saldo(conta.getSaldo() - dto.getValor()).build(); 
 		responseDto = TransacaoResponseDto.builder().numero_conta(NUMERO_CONTA).saldo(contaAtualizada.getSaldo()).build();
 		
-		when(contaService.create(ContaMapper.fromEntityToDto(contaAtualizada))).thenReturn(contaAtualizada);
+		when(contaService.update(contaAtualizada)).thenReturn(contaAtualizada);
 		
 		when(transacaoRepository.save(TransacaoMapper.fromDtoToEntity(dto))).thenReturn(transacao);
 		

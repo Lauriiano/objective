@@ -13,4 +13,6 @@ public interface ContaService {
 	
 	Conta findById(Integer id);
 	
+	Conta update(Conta conta);
+	
 }

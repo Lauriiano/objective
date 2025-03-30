@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import br.com.objective.dto.TransacaoDto;
 import br.com.objective.dto.TransacaoResponseDto;
 import br.com.objective.exception.BadRequestException;
-import br.com.objective.mapper.ContaMapper;
 import br.com.objective.mapper.TransacaoMapper;
 import br.com.objective.model.Conta;
 import br.com.objective.model.Transacao;
@@ -39,7 +38,7 @@ public class TransacaoServiceImpl implements TransacaoService {
 
 		conta.setSaldo(conta.getSaldo() - dto.getValor());
 		
-		contaService.create(ContaMapper.fromEntityToDto(conta)); //edita o valor na tabela
+		contaService.update(conta);
 		
 		Transacao transacao = transacaoRepository.save(TransacaoMapper.fromDtoToEntity(dto));
 		
