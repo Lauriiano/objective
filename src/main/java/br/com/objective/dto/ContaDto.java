@@ -1,6 +1,6 @@
 package br.com.objective.dto;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -18,6 +18,7 @@ public class ContaDto {
 	private Integer numero_conta;
 	
 	@NotNull(message = "Não pode ser nulo")
+	@Min(value = 1)
 	private float saldo;
 	
 }

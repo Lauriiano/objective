@@ -51,8 +51,6 @@ public class ResourcesHandler {
 	@ExceptionHandler(UnexpectedTypeException.class)
 	public ResponseEntity<ErrorResponseDto> unexpectedTypeException(UnexpectedTypeException ex) {
 		
-		Map<String, String> messages = new HashMap<>();
-		
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorResponseDto.builder()
 				.msg(ex.getMessage())
 				.httpStatus(HttpStatus.BAD_REQUEST)
