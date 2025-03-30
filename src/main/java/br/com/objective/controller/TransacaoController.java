@@ -1,5 +1,7 @@
 package br.com.objective.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +22,7 @@ public class TransacaoController {
 	TransacaoService transacaoService;
 	
 	@PostMapping
-	public ResponseEntity<TransacaoResponseDto> transacao(@RequestBody TransacaoDto dto) {
+	public ResponseEntity<TransacaoResponseDto> transacao(@RequestBody @Valid TransacaoDto dto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(transacaoService.transacao(dto));
 	}
 	

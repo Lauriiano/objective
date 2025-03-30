@@ -2,6 +2,7 @@ package br.com.objective.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class ContaController {
 	ContaService contaService;
 	
 	@PostMapping
-	public ResponseEntity<Conta> create(@RequestBody ContaDto dto) {
+	public ResponseEntity<Conta> create(@RequestBody @Valid ContaDto dto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(contaService.create(dto));
 	}
 	
