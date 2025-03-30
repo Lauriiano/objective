@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.objective.dto.TransacaoDto;
 import br.com.objective.dto.TransacaoResponseDto;
+import br.com.objective.exception.BadRequestException;
 import br.com.objective.mapper.ContaMapper;
 import br.com.objective.mapper.TransacaoMapper;
 import br.com.objective.model.Conta;
@@ -33,7 +34,7 @@ public class TransacaoServiceImpl implements TransacaoService {
 		validarTaxaTransacao(dto);
 		
 		if(conta.getSaldo() < dto.getValor()) {
-			// Lançar exceção 404 Saldo Insuficiente
+			throw new BadRequestException("Saldo Insuficiente.");
 		}
 
 		conta.setSaldo(conta.getSaldo() - dto.getValor());

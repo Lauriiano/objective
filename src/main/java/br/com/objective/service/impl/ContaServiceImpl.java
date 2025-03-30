@@ -1,11 +1,13 @@
 package br.com.objective.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.objective.dto.ContaDto;
+import br.com.objective.exception.BadRequestException;
 import br.com.objective.mapper.ContaMapper;
 import br.com.objective.model.Conta;
 import br.com.objective.repository.ContaRepository;
@@ -18,6 +20,12 @@ public class ContaServiceImpl implements ContaService {
 	ContaRepository contaRepository;
 
 	public Conta create(ContaDto dto) {
+		Optional<Conta> conta = buscarContaPorId(dto.getNumero_conta());
+		
+		if(conta.isPresent()) {
+			throw new BadRequestException("Conta ja existe.");
+		}
+		
 		return contaRepository.save(ContaMapper.fromDtoToEntity(dto));
 	}
 
@@ -26,7 +34,18 @@ public class ContaServiceImpl implements ContaService {
 	}
 
 	public Conta findById(Integer id) {
-		return contaRepository.findById(id).get();
+		
+		Optional<Conta> conta =  buscarContaPorId(id);
+		
+		if(!conta.isPresent()) {
+			throw new BadRequestException("Conta não encontrada.");
+		}
+		
+		return buscarContaPorId(id).get();
+	}
+
+	private Optional<Conta> buscarContaPorId(Integer id) {
+		return contaRepository.findById(id);
 	}
 
 }
