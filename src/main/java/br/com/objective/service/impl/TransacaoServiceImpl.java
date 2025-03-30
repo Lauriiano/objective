@@ -50,10 +50,10 @@ public class TransacaoServiceImpl implements TransacaoService {
 	private void validarTaxaTransacao(TransacaoDto dto) {
 		switch (dto.getForma_pagamento()) {
 		case DEBITO:
-			dto.setValor(dto.getValor() * 0.03f);
+			dto.setValor(dto.getValor() * 1.3f);
 			break;
 		case CREDITO:
-			dto.setValor(dto.getValor() * 0.05f);
+			dto.setValor(dto.getValor() * 1.5f);
 			break;
 		}
 	}
