@@ -41,7 +41,7 @@ public class ContaServiceImpl implements ContaService {
 			throw new BadRequestException("Conta não encontrada.");
 		}
 		
-		return buscarContaPorId(id).get();
+		return conta.get();
 	}
 
 	private Optional<Conta> buscarContaPorId(Integer id) {
